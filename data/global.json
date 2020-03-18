@@ -1,0 +1,29 @@
+{
+  "include": [
+    {
+      "id":"1",
+      "name": "亚洲",
+      "value": "newYork"
+    },
+    {
+      "id":"5",
+      "name": "欧洲",
+      "value": "losAngeles"
+    },
+    {
+      "id":"44",
+      "name": "大洋洲",
+      "value": "chicago"
+    },
+    {
+      "id":"16",
+      "name": "北美洲",
+      "value": "Houston"
+    },
+    {
+      "id":"23",
+      "name": "非洲",
+      "value": "philadelphia"
+    }
+  ]
+}

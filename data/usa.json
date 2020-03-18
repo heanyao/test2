@@ -1,0 +1,34 @@
+{
+  "include": [
+    {
+      "id":"5",
+      "name": "纽约2",
+      "value": "newYork",
+      "price": "￥50万"
+    },
+    {
+      "id":"5",
+      "name": "洛杉矶2",
+      "value": "losAngeles",
+      "price": "￥50万"
+    },
+    {
+      "id":"5",
+      "name": "芝加哥2",
+      "value": "chicago",
+      "price": "￥50万"
+    },
+    {
+      "id":"5",
+      "name": "休士顿2",
+      "value": "Houston",
+      "price": "￥50万"
+    },
+    {
+      "id":"5",
+      "name": "费城2",
+      "value": "philadelphia",
+      "price": "￥50万"
+    }
+  ]
+}
