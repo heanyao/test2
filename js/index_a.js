@@ -3,6 +3,10 @@ var time = 0;//计时
 var hoverFlag = 0;//标记是全球还是其他国家，0是全球，1是其他国家
 var currentPage = 1;
 var flag = "";//标识选择了哪个国家
+var links = [];
+    links[0] = 'https://cd.qq.com/';
+    links[1] = 'https://www.baidu.com/';
+    links[2] = 'https://www.so.com/';
 
 var _serverUrl = "http://fin110.com";
 
@@ -240,8 +244,8 @@ function init() {
 
     _bindCountryEvent();
 
-    _bindPrePageBtn();
-    _bindNextPageBtn();
+    // _bindPrePageBtn();
+    // _bindNextPageBtn();
     _bindClickMenuNavigation();
     _setArrowPosition();
     _bindSwitchBtnHover();
@@ -417,6 +421,7 @@ function _bindCountryEvent() {
                 "globalFlag" === name ? hoverFlag = 0 : hoverFlag = 1;
                 if (hoverFlag === 0) {//全球
                     $(".moreCountryOrCity").hide();
+                    flag = 1000;
                     _formatCountryOrCity(globalData);
                     _getCountryList(1);//默认获取亚洲国家
                 } else {
@@ -615,41 +620,37 @@ function byPoint(str) {
  * 绑定列表查看上一页
  * @private
  */
-function _bindPrePageBtn(_suc) {
-    currentPage--;
-    $(".prePageBtn").click(function () {
-        var roll = $(this).prev('.pageChangeCon').find(".listContent");
-        var left = roll.css('left');
-        left = parseInt(left.slice(0, -2));
-
-        if (left !== 0) {
-            currentPage--;
-            $(this).prev('.pageChangeCon').find(".listContent").css("left", left + 1260 + 'px')
-        } else {
-            window.location = "https://www.baidu.com/";
-        }
-    });
-
+function bindPrePageBtn(a) {
+    left = $('.prePageBtn').eq(a).prev('.pageChangeCon').find(".listContent").css('left');
+    left = parseInt(left.slice(0, -2));
+    left = Math.abs(left);
+    var currentPage = left/1260;
+    var roll = $('.prePageBtn').eq(a).prev('.pageChangeCon').find(".listContent");
+    if (left !== 0) {
+        currentPage--;
+        roll.css("left", -(left - 1260) + 'px')
+    } else {
+        window.location = links[a];
+    }
 }
 
 /*绑定查看下一页*/
-function _bindNextPageBtn() {
-    var count = 0;
+function bindNextPageBtn(a) {
+    left = $('.prePageBtn').eq(a).prev('.pageChangeCon').find(".listContent").css('left');
+    left = parseInt(left.slice(0, -2));
+    left = Math.abs(left);
+    var currentPage = left/1260;
+    var con = $('.nextPageBtn').eq(a).prevAll('.pageChangeCon');
+    count = con.find(".listItem_a").length;
+    count = count % 3 === 0 ? count / 3 : parseInt(count / 3) + 1;
 
-    $(".nextPageBtn").click(function () {
-        var con = $(this).prevAll('.pageChangeCon');
-        count = con.find(".listItem_a").length;
-        count = count % 3 === 0 ? count / 3 : parseInt(count / 3) + 1;
-        if (currentPage < count) {
-            con.find(".listContent").css("left", -1260 * currentPage + 'px');
-            currentPage++;
-        }
-        else {
-            currentPage = count;
-            window.location = "https://www.baidu.com/";
-        }
-    });
-
+    if (currentPage < count-1) {
+        con.find(".listContent").css("left", -1260 * (currentPage+1) + 'px');
+    }
+    else {
+        currentPage = count;
+        window.location = links[a];
+    }
 }
 
 /*监控屏幕宽度改变修改左右切换按钮的位置*/
