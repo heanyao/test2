@@ -290,20 +290,20 @@ function _moreSelected() {
 
     /*确认*/
     $(".submitBtn").click(function () {
-        var selectList = $(".moreCondition_pop").find(".selectedCondition");
-        console.log(selectList);
+
+        var selectList = $(".moreCondition_pop").find(".selectedCondition");;
         var url = "";
         //没有选择
         if (selectList.length === 0) {
             console.log("没有选择");
-            window.location.href = window.location.href
+            window.location.href = window.location.href;
         }
         if (selectList.length > 0) {
-            var str = "";
+            let str = "";
             selectList.each(function () {
                 var key = $(this).parents('.conditionItem').attr('name');
-                console.log(key, '=', this.innerHTML);
-                str += key + "=" + this.innerHTML + "&";
+                console.log(key, '=', $(this).context.dataset.super);
+                 str += key + "=" + $(this).context.dataset.super + "&";
             });
             url = _serverUrl + "?" + str.slice(0, str.length - 1);
             console.log("url=", url);
