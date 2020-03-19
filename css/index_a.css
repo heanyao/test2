@@ -961,8 +961,10 @@ a {
 .popupContainer {
     position: fixed;
     top: 10px;
+    height: 584px;
     left: 50%;
     margin-left: -600px;
+    overflow-y: scroll;
     display: none;
     z-index: 999;
 }

@@ -296,7 +296,7 @@ function _moreSelected() {
         //没有选择
         if (selectList.length === 0) {
             console.log("没有选择");
-            window.location.href = "https://www.baidu.com/"
+            window.location.href = window.location.href
         }
         if (selectList.length > 0) {
             var str = "";
@@ -390,7 +390,7 @@ function _bindSearch() {
     $(".searchBtn_a").click(function () {
         var type = $('input:radio[name="hotKeyS"]:checked').val();//获取搜索框的搜索类别是房源(fy)还是资讯(zx)
         var condition = $(".hotKeyInput")[0].value;
-        location
+        window.location.href=window.location.href + '?hotKeys='+type+'&condition='+condition
     })
 }
 
