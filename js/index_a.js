@@ -261,6 +261,7 @@ function _moreSelected() {
         $(".more_hide").hide();
         $("body").css("overflow", "hidden");
         $(".wrapBackground").show();
+        $(".moreConditionBtn").show();
     });
 
     /*为除国家条件之外项，添加选择事件*/
