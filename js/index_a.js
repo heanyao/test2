@@ -390,11 +390,15 @@ function _bindSearch() {
     });
     $(".searchBtn_a").click(function () {
         var type = $('input:radio[name="hotKeyS"]:checked').val();//获取搜索框的搜索类别是房源(fy)还是资讯(zx)
-        var condition = $(".hotKeyInput")[0].value;
-        window.location.href=window.location.href + '?hotKeys='+type+'&condition='+condition
+        var condition = $.trim($(".hotKeyInput")[0].value);
+        console.log(condition)
+        if(type === 'fy'){
+            window.location.href=window.location.href + '?hotKeys='+type+'&condition='+condition
+        }else {
+            window.location.href='https://www.baidu.com' + '?hotKeys='+type+'&condition='+condition
+        }
     })
 }
-
 /*绑定选择国家显示箭头和向右显示滑动框*/
 function _bindCountryEvent() {
     _bindSelectedPrice();
